@@ -1,0 +1,225 @@
+﻿openapi: 3.0.3
+info:
+  title: AiCordCloud API
+  version: 1.0.0
+  description: OpenAI-compatible gateway for AiCord customers.
+servers:
+  - url: https://api.aicord.cloud
+paths:
+  /:
+    get:
+      summary: Service metadata
+      operationId: getRoot
+      responses:
+        '200':
+          description: Service metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  version:
+                    type: string
+                  status:
+                    type: string
+                required: [name, version, status]
+  /health:
+    get:
+      summary: Service health
+      operationId: getHealth
+      responses:
+        '200':
+          description: Health status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                required: [ok]
+  /v1/models:
+    get:
+      summary: List public model aliases
+      operationId: listModels
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Model alias list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ModelItem'
+                required: [object, data]
+        '401':
+          $ref: '#/components/responses/AuthError'
+  /v1/chat/completions:
+    post:
+      summary: Create chat completion
+      operationId: createChatCompletion
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionRequest'
+      responses:
+        '200':
+          description: Chat completion response
+          headers:
+            x-aicord-tier:
+              schema:
+                type: string
+            x-aicord-model:
+              schema:
+                type: string
+            x-aicord-upstream:
+              schema:
+                type: string
+            x-aicord-latency-ms:
+              schema:
+                type: string
+            x-ratelimit-remaining:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionResponse'
+        '400':
+          $ref: '#/components/responses/InvalidRequestError'
+        '401':
+          $ref: '#/components/responses/AuthError'
+        '429':
+          $ref: '#/components/responses/RateLimitError'
+        '502':
+          $ref: '#/components/responses/UpstreamError'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+  schemas:
+    ErrorEnvelope:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            message:
+              type: string
+            type:
+              type: string
+          required: [message, type]
+      required: [error]
+    ModelItem:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        owned_by:
+          type: string
+        target:
+          type: string
+      required: [id, object, owned_by]
+    ChatMessage:
+      type: object
+      properties:
+        role:
+          type: string
+          enum: [system, user, assistant]
+        content:
+          type: string
+      required: [role, content]
+    ChatCompletionRequest:
+      type: object
+      properties:
+        model:
+          type: string
+          example: aicord/fast
+        messages:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+        max_tokens:
+          type: integer
+          minimum: 1
+        stream:
+          type: boolean
+          default: false
+      required: [model, messages]
+    ChatChoice:
+      type: object
+      properties:
+        index:
+          type: integer
+        message:
+          $ref: '#/components/schemas/ChatMessage'
+        finish_reason:
+          type: string
+      required: [index, message]
+    ChatCompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        created:
+          type: integer
+        model:
+          type: string
+        choices:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatChoice'
+      required: [id, object, created, model, choices]
+  responses:
+    AuthError:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    InvalidRequestError:
+      description: Invalid request payload
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    RateLimitError:
+      description: Rate limit exceeded
+      headers:
+        retry-after:
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'
+    UpstreamError:
+      description: Upstream provider failure
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'

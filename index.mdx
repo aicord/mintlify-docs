@@ -1,0 +1,35 @@
+﻿# AiCord + AiCordCloud Documentation
+
+Official documentation for AiCord Paid and AiCordCloud API.
+
+## Who this is for
+
+- Bot owners deploying AiCord in production
+- Teams running `api.aicord.cloud`
+- Buyers that need operational runbooks and predictable setup
+
+## Product scope
+
+This documentation targets **Paid** operations.
+Trial can be referenced for feature comparison, but deployment and runbook steps here are for Paid.
+
+## Read in order
+
+1. [Quickstart](getting-started/quickstart)
+2. [Deploy VPS CPU Hybrid](deploy/vps-cpu-hybrid)
+3. [Operations Runbook](runbook/operations-runbook)
+4. [Troubleshooting](troubleshooting/common-errors)
+5. [API Reference](reference/api-reference)
+
+## Languages
+
+- English (default)
+- Portuguese (PT-BR mirror): [Inicio](pt/index)
+
+## Production baseline
+
+- Target infra profile: CPU-only hybrid (local + remote fallback)
+- Public safe capacity target: 10-20 concurrent users at launch
+- SLO target:
+  - `p95 <= 4s` for short requests
+  - `p95 <= 8s` for complex requests

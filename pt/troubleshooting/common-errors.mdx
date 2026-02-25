@@ -1,0 +1,36 @@
+﻿# Troubleshooting (PT-BR)
+
+## 401 Unauthorized
+
+Causas comuns:
+- chave incorreta
+- formato de header errado
+- chave rotacionada e bot nao atualizado
+
+## 429 Rate limit
+
+Correcao:
+1. reduzir burst
+2. ajustar limite por tenant
+3. aplicar fila/backpressure
+
+## Timeout / lentidao
+
+Correcao:
+1. reduzir tokens
+2. mandar requests pesados para fallback remoto
+3. ajustar modelo local
+
+## Upstream offline
+
+Correcao:
+1. checar processo local
+2. validar URL/chave do fallback
+3. monitorar recuperacao
+
+## Sem creditos
+
+Correcao:
+1. regularizar billing
+2. validar status da conta no provider
+3. manter fallback ativo

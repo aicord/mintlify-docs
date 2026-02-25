@@ -1,0 +1,48 @@
+﻿# Referencia de API (PT-BR)
+
+Base URL:
+
+```text
+https://api.aicord.cloud
+```
+
+## Autenticacao
+
+- `Authorization: Bearer <API_KEY>`
+- `x-api-key: <API_KEY>`
+
+## Endpoints oficiais
+
+- `GET /`
+- `GET /health`
+- `GET /v1/models`
+- `POST /v1/chat/completions`
+
+## Headers importantes
+
+- `x-aicord-tier`
+- `x-aicord-model`
+- `x-aicord-upstream`
+- `x-aicord-latency-ms`
+- `x-ratelimit-remaining`
+
+## Formato de erro
+
+```json
+{
+  "error": {
+    "message": "Unauthorized",
+    "type": "authentication_error"
+  }
+}
+```
+
+## OpenAPI
+
+- `openapi/aicordcloud.openapi.yaml`
+
+Validacao:
+
+```bash
+npx mintlify@latest openapi-check docs/openapi/aicordcloud.openapi.yaml
+```

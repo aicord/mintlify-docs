@@ -1,0 +1,46 @@
+﻿# Deploy VPS CPU Hybrid
+
+This guide is optimized for your launch profile:
+
+- 8 vCPU
+- 24 GB RAM
+- NVMe storage
+- CPU-only local inference + remote fallback
+
+## Architecture
+
+1. AiCord bot calls `api.aicord.cloud`
+2. AiCordCloud routes `aicord/fast` to local CPU model
+3. Heavy or overflow requests route to remote upstream
+
+## Recommended baseline
+
+```env
+REQUEST_TIMEOUT_MS=12000
+RATE_LIMIT_PER_MINUTE=120
+ALLOW_DIRECT_MODEL=false
+UPSTREAM_OVERRIDE_MODEL=qwen2.5-coder:7b
+```
+
+## Deploy steps
+
+1. Provision VPS and update system packages.
+2. Install Python 3.11+ and create virtual environment.
+3. Configure `AICORDCLOUD/.env`.
+4. Run gateway process (`python run.py` or process manager).
+5. Put reverse proxy in front (Nginx/Caddy) with TLS.
+6. Point `api.aicord.cloud` DNS to proxy.
+
+## DNS and TLS
+
+- API host: `api.aicord.cloud`
+- Docs host: `docs.aicord.cloud`
+- Use strict TLS mode and automatic certificate renewals.
+
+## Post-deploy verification
+
+1. `GET /health` returns `{"ok": true}`
+2. `GET /v1/models` lists `aicord/fast`, `aicord/balanced`, `aicord/best`
+3. `POST /v1/chat/completions` works with valid key
+4. Invalid key returns `401`
+5. Exceeded rate returns `429`

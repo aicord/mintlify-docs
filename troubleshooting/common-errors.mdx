@@ -1,0 +1,60 @@
+﻿# Troubleshooting
+
+## 401 Unauthorized
+
+### Symptoms
+- API replies `401`
+- Bot logs show authentication error
+
+### Causes
+- Wrong API key
+- Missing `Bearer` prefix
+- Key rotated but bot not updated
+
+### Fix
+1. Validate key in gateway config.
+2. Confirm header format.
+3. Restart bot after `.env` update.
+
+## 429 Rate Limit Exceeded
+
+### Symptoms
+- API replies `429`
+- `retry-after` header present
+
+### Fix
+1. Reduce burst traffic.
+2. Increase tier limits for tenant.
+3. Add queue/backpressure in callers.
+
+## Timeout / Slow responses
+
+### Causes
+- CPU saturation
+- Prompt too long
+- Model too heavy for local runtime
+
+### Fix
+1. Lower max tokens.
+2. Route heavy requests to remote fallback.
+3. Optimize runtime model profile.
+
+## Upstream provider offline
+
+### Symptoms
+- `502` upstream errors
+
+### Fix
+1. Check local runtime process.
+2. Check fallback upstream URL and key.
+3. Fail over to remote upstream and monitor recovery.
+
+## No credits / billing blocked
+
+### Symptoms
+- Provider rejects requests with quota/billing messages
+
+### Fix
+1. Refill credits or update billing.
+2. Confirm provider account status.
+3. Keep fallback providers configured.

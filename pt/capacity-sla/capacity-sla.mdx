@@ -1,0 +1,25 @@
+﻿# Capacity and SLA (PT-BR)
+
+## Perfil base
+
+- 8 vCPU
+- 24 GB RAM
+- NVMe
+- CPU-only hibrido
+
+## Capacidade segura de lancamento
+
+- 10-20 simultaneos
+
+## SLO
+
+- `p95 <= 4s` para requests curtos
+- `p95 <= 8s` para requests complexos
+
+## Escala
+
+Ao ultrapassar a faixa segura:
+
+1. reforcar fila e limites
+2. mover cargas pesadas para remoto
+3. escalar instancias ou migrar inferencia local para GPU

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "AiCord Documentation",
+  "theme": "mint",
+  "colors": {
+    "primary": "#1f7ae0",
+    "light": "#1f7ae0",
+    "dark": "#5aa2f7"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "English",
+        "groups": [
+          {
+            "group": "Start",
+            "pages": [
+              "index",
+              "getting-started/quickstart",
+              "getting-started/trial-paid-source",
+              "deploy/vps-cpu-hybrid",
+              "deploy/mintlify-cloudflare-domain"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "runbook/operations-runbook",
+              "runbook/documentation-process",
+              "troubleshooting/common-errors",
+              "security/safety-security",
+              "capacity-sla/capacity-sla"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/api-reference",
+              "reference/bot-integration",
+              "changelog/documentation-updates"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "PT-BR",
+        "groups": [
+          {
+            "group": "Inicio",
+            "pages": [
+              "pt/index",
+              "pt/getting-started/quickstart",
+              "pt/getting-started/trial-paid-source",
+              "pt/deploy/vps-cpu-hybrid",
+              "pt/deploy/mintlify-cloudflare-domain"
+            ]
+          },
+          {
+            "group": "Operacao",
+            "pages": [
+              "pt/runbook/operations-runbook",
+              "pt/runbook/documentation-process",
+              "pt/troubleshooting/common-errors",
+              "pt/security/safety-security",
+              "pt/capacity-sla/capacity-sla"
+            ]
+          },
+          {
+            "group": "Referencia",
+            "pages": [
+              "pt/reference/api-reference",
+              "pt/reference/bot-integration",
+              "pt/changelog/documentation-updates"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

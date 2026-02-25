@@ -1,0 +1,39 @@
+﻿# Capacity and SLA
+
+This page publishes conservative operational targets for launch.
+
+## Baseline profile
+
+- 8 vCPU
+- 24 GB RAM
+- NVMe storage
+- CPU-only hybrid routing
+
+## Safe launch capacity
+
+- 10-20 concurrent users (launch target)
+
+## SLO targets
+
+- `p95 <= 4s` for short requests
+- `p95 <= 8s` for complex requests
+
+## What affects performance
+
+- Prompt length
+- Token output limit
+- Local model profile
+- Queue depth and upstream health
+
+## Scaling policy
+
+If sustained concurrency exceeds safe range:
+
+1. Increase queue controls and limits.
+2. Shift heavy tiers to remote upstream.
+3. Add more instances or move local inference to GPU.
+
+## Commercial guidance
+
+Do not promise unlimited concurrency.
+Publish ranges and monitor real production telemetry.

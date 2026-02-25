@@ -1,0 +1,54 @@
+﻿# Quickstart
+
+This quickstart gets a new customer from zero to first successful response.
+
+## 1. Configure AiCord bot
+
+Set these variables in bot `.env`:
+
+```env
+AI_PROVIDER=openai
+OPENAI_BASE_URL=https://api.aicord.cloud/v1
+OPENAI_API_KEY=<customer_or_tenant_api_key>
+OPENAI_MODEL=aicord/fast
+AI_FALLBACK_PROVIDERS=
+```
+
+## 2. Configure server channels
+
+Use Discord slash commands:
+
+1. `/chat user channel`
+2. `/chat admin channel`
+3. Optional: `/chat prompt edit`
+
+## 3. Validate API connectivity
+
+Use `curl`:
+
+```bash
+curl https://api.aicord.cloud/v1/chat/completions \
+  -H "Authorization: Bearer YOUR_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "aicord/fast",
+    "messages": [{"role":"user","content":"Say OK"}],
+    "temperature": 0.2
+  }'
+```
+
+Expected: `200 OK` and assistant text in `choices[0].message.content`.
+
+## 4. Validate in Discord
+
+1. Send a short prompt in admin chat channel.
+2. Confirm normal reply latency.
+3. Confirm audit/runtime logs show provider and latency.
+
+## 5. Minimum go-live checklist
+
+- Bot replies in configured channels
+- `/doctor live_probe:true` passes
+- `/panel` opens and settings persist
+- API key is not hardcoded in public repos
+- Fallback provider path is documented

@@ -1,0 +1,31 @@
+﻿# Deploy VPS CPU Hybrid (PT-BR)
+
+Perfil recomendado para lancamento:
+
+- 8 vCPU
+- 24 GB RAM
+- NVMe
+- CPU-only local com fallback remoto
+
+## Arquitetura
+
+1. Bot chama `api.aicord.cloud`
+2. `aicord/fast` vai para runtime local
+3. Requests pesados/pico vao para fallback remoto
+
+## Baseline sugerido
+
+```env
+REQUEST_TIMEOUT_MS=12000
+RATE_LIMIT_PER_MINUTE=120
+ALLOW_DIRECT_MODEL=false
+UPSTREAM_OVERRIDE_MODEL=qwen2.5-coder:7b
+```
+
+## Validacao pos deploy
+
+1. `GET /health` -> `{"ok": true}`
+2. `GET /v1/models` com aliases corretos
+3. `POST /v1/chat/completions` com chave valida
+4. Chave invalida retorna `401`
+5. Excesso de taxa retorna `429`

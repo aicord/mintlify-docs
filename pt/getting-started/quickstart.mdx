@@ -1,0 +1,38 @@
+﻿# Quickstart (PT-BR)
+
+Guia rapido para sair do zero ate a primeira resposta com sucesso.
+
+## 1. Configure o `.env` do bot
+
+```env
+AI_PROVIDER=openai
+OPENAI_BASE_URL=https://api.aicord.cloud/v1
+OPENAI_API_KEY=<chave_do_cliente>
+OPENAI_MODEL=aicord/fast
+AI_FALLBACK_PROVIDERS=
+```
+
+## 2. Configure canais no Discord
+
+1. `/chat user channel`
+2. `/chat admin channel`
+3. Opcional: `/chat prompt edit`
+
+## 3. Teste a API
+
+```bash
+curl https://api.aicord.cloud/v1/chat/completions \
+  -H "Authorization: Bearer SUA_CHAVE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "aicord/fast",
+    "messages": [{"role":"user","content":"Diga OK"}],
+    "temperature": 0.2
+  }'
+```
+
+## 4. Teste no Discord
+
+- Envie prompt curto no canal admin
+- Valide latencia e resposta
+- Confira logs de runtime/auditoria

@@ -1,0 +1,29 @@
+﻿# Safety and Security
+
+## Key handling
+
+- Never commit API keys to Git.
+- Use secret management in production.
+- Rotate tenant keys on schedule.
+
+## Access control
+
+- Use least-privilege for panel and server access.
+- Restrict management commands to owner/admin IDs.
+
+## Runtime guardrails
+
+- Enforce request timeouts.
+- Use rate limits per tenant.
+- Use queue and backpressure to prevent overload.
+
+## Logging policy
+
+- Log status codes, latency, tier, and upstream route.
+- Do not log full secrets.
+- Keep incident timeline for postmortems.
+
+## Licensing and distribution
+
+- Keep Paid package and support policy explicit.
+- Keep trial restrictions documented to avoid misuse.

@@ -1,0 +1,24 @@
+﻿# Safety and Security (PT-BR)
+
+## Chaves
+
+- Nunca versionar chaves em Git
+- Usar secret manager em producao
+- Rotacionar chaves periodicamente
+
+## Controle de acesso
+
+- Menor privilegio para painel e servidor
+- Comandos de gestao restritos a owner/admin
+
+## Protecoes de runtime
+
+- Timeout
+- Rate limit por tenant
+- Fila/backpressure
+
+## Logs
+
+- Registrar status, latencia, tier e upstream
+- Nao registrar segredos
+- Manter timeline para RCA

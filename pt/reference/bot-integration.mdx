@@ -1,0 +1,24 @@
+﻿# Integracao com o Bot (PT-BR)
+
+## `.env` do bot
+
+```env
+AI_PROVIDER=openai
+OPENAI_BASE_URL=https://api.aicord.cloud/v1
+OPENAI_API_KEY=<tenant_key>
+OPENAI_MODEL=aicord/fast
+AI_FALLBACK_PROVIDERS=
+```
+
+## Checklist
+
+1. Bot sobe sem erro de provider
+2. Prompt de teste retorna resposta
+3. Chave invalida gera `401`
+4. Limite de taxa gera `429`
+
+## Guardrails recomendados
+
+- Timeout estrito
+- Limite de tokens por canal
+- Fila/backpressure no gateway
