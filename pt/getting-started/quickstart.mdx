@@ -1,8 +1,8 @@
-﻿# Quickstart (PT-BR)
+﻿# ⚡ Quickstart (PT-BR)
 
-Guia rapido para sair do zero ate a primeira resposta com sucesso.
+> 🎯 Objetivo: sair do zero ate a primeira resposta valida em minutos.
 
-## 1. Configure o `.env` do bot
+## 1. 🔧 Configure o `.env` do bot
 
 ```env
 AI_PROVIDER=openai
@@ -12,13 +12,13 @@ OPENAI_MODEL=aicord/fast
 AI_FALLBACK_PROVIDERS=
 ```
 
-## 2. Configure canais no Discord
+## 2. 💬 Configure os canais no Discord
 
 1. `/chat user channel`
 2. `/chat admin channel`
 3. Opcional: `/chat prompt edit`
 
-## 3. Teste a API
+## 3. 📡 Valide a API
 
 ```bash
 curl https://api.aicord.cloud/v1/chat/completions \
@@ -31,8 +31,18 @@ curl https://api.aicord.cloud/v1/chat/completions \
   }'
 ```
 
-## 4. Teste no Discord
+✅ Esperado: `200 OK` com texto em `choices[0].message.content`.
+
+## 4. ✅ Validacao no Discord
 
 - Envie prompt curto no canal admin
-- Valide latencia e resposta
-- Confira logs de runtime/auditoria
+- Verifique latencia e resposta
+- Confira logs com provider e latencia
+
+## 5. 🟢 Checklist de go-live
+
+- [ ] Bot responde nos canais configurados
+- [ ] `/doctor live_probe:true` aprovado
+- [ ] `/panel` abre e persiste configuracoes
+- [ ] Chave de API nao exposta em repositorio publico
+- [ ] Caminho de fallback documentado

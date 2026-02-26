@@ -1,19 +1,14 @@
-﻿# Deploy VPS CPU Hybrid (PT-BR)
+﻿# 🖥️ Deploy VPS CPU Hybrid (PT-BR)
 
-Perfil recomendado para lancamento:
+> Perfil de lancamento: **8 vCPU · 24 GB RAM · NVMe · CPU-only hibrido**
 
-- 8 vCPU
-- 24 GB RAM
-- NVMe
-- CPU-only local com fallback remoto
-
-## Arquitetura
+## 🏗️ Arquitetura
 
 1. Bot chama `api.aicord.cloud`
-2. `aicord/fast` vai para runtime local
+2. `aicord/fast` vai para modelo local em CPU
 3. Requests pesados/pico vao para fallback remoto
 
-## Baseline sugerido
+## ⚙️ Baseline recomendado
 
 ```env
 REQUEST_TIMEOUT_MS=12000
@@ -22,10 +17,25 @@ ALLOW_DIRECT_MODEL=false
 UPSTREAM_OVERRIDE_MODEL=qwen2.5-coder:7b
 ```
 
-## Validacao pos deploy
+## 🚀 Passos de deploy
 
-1. `GET /health` -> `{"ok": true}`
-2. `GET /v1/models` com aliases corretos
-3. `POST /v1/chat/completions` com chave valida
-4. Chave invalida retorna `401`
-5. Excesso de taxa retorna `429`
+1. Provisionar VPS e atualizar pacotes
+2. Instalar Python 3.11+ e criar venv
+3. Configurar `AICORDCLOUD/.env`
+4. Subir gateway (`python run.py` ou gerenciador de processo)
+5. Colocar reverse proxy com TLS
+6. Apontar DNS de `api.aicord.cloud`
+
+## 🔐 DNS + TLS
+
+- Host API: `api.aicord.cloud`
+- Host Docs: `docs.aicord.cloud`
+- Usar TLS estrito com renovacao automatica
+
+## ✅ Verificacao pos deploy
+
+- [ ] `GET /health` retorna `{"ok": true}`
+- [ ] `GET /v1/models` lista aliases esperados
+- [ ] `POST /v1/chat/completions` funciona com chave valida
+- [ ] Chave invalida retorna `401`
+- [ ] Rate limit retorna `429`

@@ -1,36 +1,29 @@
-﻿# Troubleshooting (PT-BR)
+﻿# 🆘 Troubleshooting (PT-BR)
 
-## 401 Unauthorized
+> Diagnostico rapido dos erros mais comuns em producao.
 
-Causas comuns:
-- chave incorreta
-- formato de header errado
-- chave rotacionada e bot nao atualizado
+| Erro | Causa comum | Correcao imediata |
+| --- | --- | --- |
+| `401 Unauthorized` | Chave errada/rotacionada | Validar chave + header e reiniciar bot |
+| `429 Rate limit` | Burst acima do limite | Reduzir burst, ajustar tier, aplicar fila |
+| `Timeout` | CPU saturada/prompt longo | Reduzir tokens e usar fallback remoto |
+| `502 Upstream` | Upstream local/remoto indisponivel | Checar processo, URL, chave e failover |
+| Billing/quota | Sem creditos | Regularizar billing e confirmar status |
 
-## 429 Rate limit
+## 🔍 401 Unauthorized
 
-Correcao:
-1. reduzir burst
-2. ajustar limite por tenant
-3. aplicar fila/backpressure
+- Validar valor da chave
+- Validar formato `Authorization: Bearer ...`
+- Reiniciar bot apos mudanca no `.env`
 
-## Timeout / lentidao
+## 🔍 429 Rate limit
 
-Correcao:
-1. reduzir tokens
-2. mandar requests pesados para fallback remoto
-3. ajustar modelo local
+- Aplicar backpressure no caller
+- Revisar limites por tenant
+- Retry com jitter
 
-## Upstream offline
+## 🔍 Timeout / lentidao
 
-Correcao:
-1. checar processo local
-2. validar URL/chave do fallback
-3. monitorar recuperacao
-
-## Sem creditos
-
-Correcao:
-1. regularizar billing
-2. validar status da conta no provider
-3. manter fallback ativo
+- Reduzir `max_tokens`
+- Rotear cargas pesadas para remoto
+- Reavaliar perfil do modelo local

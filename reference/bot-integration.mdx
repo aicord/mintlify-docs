@@ -1,8 +1,8 @@
-﻿# Bot Integration (AiCord -> AiCordCloud)
+﻿# 🤖 Bot Integration (AiCord -> AiCordCloud)
 
-Use this integration to remove external key friction for customers.
+> Remove provider-key friction for your customers.
 
-## Bot `.env`
+## ⚙️ Bot `.env`
 
 ```env
 AI_PROVIDER=openai
@@ -12,21 +12,21 @@ OPENAI_MODEL=aicord/fast
 AI_FALLBACK_PROVIDERS=
 ```
 
-## Routing notes
+## 🧭 Routing notes
 
-- Keep `aicord/fast` as default for low latency.
-- Use `aicord/balanced` for larger code tasks.
-- Use `aicord/best` selectively for premium flows.
+- Use `aicord/fast` as default low-latency tier
+- Use `aicord/balanced` for heavier code tasks
+- Use `aicord/best` for premium flows only
 
-## Validation checklist
+## ✅ Validation checklist
 
-1. Bot starts without provider errors.
-2. Test prompt returns response.
-3. Bad key returns explicit `401` in logs.
-4. If rate-limited, returns `429` with retry guidance.
+- [ ] Bot starts with no provider auth errors
+- [ ] Test prompt returns successful response
+- [ ] Invalid key logs explicit `401`
+- [ ] Rate-limited requests return `429` + retry path
 
-## Recommended guardrails
+## 🛡️ Recommended guardrails
 
-- Keep request timeout strict.
-- Limit max tokens for user-facing channels.
-- Enable queue/backpressure in API gateway.
+- Strict request timeouts
+- Max token limits in user channels
+- Queue/backpressure on API gateway

@@ -1,8 +1,10 @@
-﻿# Quickstart
+﻿# ⚡ Quickstart
 
-This quickstart gets a new customer from zero to first successful response.
+> 🎯 Goal: from zero to first valid response in minutes.
 
-## 1. Configure AiCord bot
+---
+
+## 1. 🔧 Configure AiCord bot
 
 Set these variables in bot `.env`:
 
@@ -14,17 +16,15 @@ OPENAI_MODEL=aicord/fast
 AI_FALLBACK_PROVIDERS=
 ```
 
-## 2. Configure server channels
+## 2. 💬 Configure Discord channels
 
-Use Discord slash commands:
+Use slash commands:
 
 1. `/chat user channel`
 2. `/chat admin channel`
 3. Optional: `/chat prompt edit`
 
-## 3. Validate API connectivity
-
-Use `curl`:
+## 3. 📡 Validate API connectivity
 
 ```bash
 curl https://api.aicord.cloud/v1/chat/completions \
@@ -37,18 +37,18 @@ curl https://api.aicord.cloud/v1/chat/completions \
   }'
 ```
 
-Expected: `200 OK` and assistant text in `choices[0].message.content`.
+✅ Expected: `200 OK` and assistant text in `choices[0].message.content`.
 
-## 4. Validate in Discord
+## 4. ✅ Validate in Discord
 
-1. Send a short prompt in admin chat channel.
-2. Confirm normal reply latency.
-3. Confirm audit/runtime logs show provider and latency.
+- Send a short prompt in admin channel
+- Check response latency and content
+- Confirm logs include provider and latency metadata
 
-## 5. Minimum go-live checklist
+## 5. 🟢 Go-live checklist
 
-- Bot replies in configured channels
-- `/doctor live_probe:true` passes
-- `/panel` opens and settings persist
-- API key is not hardcoded in public repos
-- Fallback provider path is documented
+- [ ] Bot replies in configured channels
+- [ ] `/doctor live_probe:true` passes
+- [ ] `/panel` opens and settings persist
+- [ ] API key is not exposed in public repos
+- [ ] Fallback path is documented

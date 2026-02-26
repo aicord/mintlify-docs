@@ -1,42 +1,42 @@
-# Dominio customizado com Mintlify + Cloudflare
+﻿# 🌐 Dominio customizado com Mintlify + Cloudflare
 
-Esta pagina cobre a publicacao de `docs.aicord.cloud`.
+> Publicacao da docs em `docs.aicord.cloud`.
 
-## 1. Conectar repositorio no Mintlify
+## 1. 🔗 Conectar repositorio no Mintlify
 
-1. Abra o dashboard Mintlify.
-2. Conecte o repositorio GitHub.
-3. Confirme o uso de `docs/docs.json`.
+1. Abrir dashboard Mintlify
+2. Conectar repositorio GitHub
+3. Confirmar `docs/docs.json` como configuracao principal
 
-## 2. Configurar dominio customizado
+## 2. 🏷️ Configurar dominio
 
-No painel Mintlify, configure:
+Definir dominio:
 
 - `docs.aicord.cloud`
 
-## 3. Configurar DNS no Cloudflare
+## 3. ☁️ Configurar DNS no Cloudflare
 
 Criar registro:
 
 - Tipo: `CNAME`
 - Nome: `docs`
 - Destino: `cname.mintlify-dns.com`
-- Proxy: seguir recomendacao Mintlify (normalmente DNS only durante validacao)
+- Proxy: seguir recomendacao Mintlify durante validacao
 
-## 4. SSL/TLS
+## 4. 🔒 SSL/TLS
 
-No Cloudflare SSL/TLS:
+Definir modo:
 
-- Usar `Full (strict)` apos provisionamento de certificado.
+- `Full (strict)` apos provisionamento de certificado
 
-## 5. Checklist de validacao
+## 5. ✅ Checklist de validacao
 
-1. `https://docs.aicord.cloud` responde.
-2. Certificado valido.
-3. Sem warning de mixed content.
-4. Build Mintlify conectado a push Git.
+- [ ] `https://docs.aicord.cloud` responde
+- [ ] Certificado valido
+- [ ] Sem mixed-content warning
+- [ ] Build Mintlify conectado ao Git
 
-## 6. Operacao continua
+## 6. 🔁 Operacao continua
 
-- Documentar registros DNS.
-- Revalidar dominio apos mudancas de DNS/seguranca.
+- Manter DNS documentado
+- Revalidar dominio apos mudancas de rede/seguranca

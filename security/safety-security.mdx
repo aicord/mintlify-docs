@@ -1,29 +1,31 @@
-﻿# Safety and Security
+﻿# 🛡️ Safety and Security
 
-## Key handling
+> Security baseline for selling and operating AiCord in production.
 
-- Never commit API keys to Git.
-- Use secret management in production.
-- Rotate tenant keys on schedule.
+## 🔐 Key handling
 
-## Access control
+- Never commit API keys to Git
+- Use secret manager for production
+- Rotate tenant keys periodically
 
-- Use least-privilege for panel and server access.
-- Restrict management commands to owner/admin IDs.
+## 👮 Access control
 
-## Runtime guardrails
+- Enforce least privilege on panel/server access
+- Restrict management commands to owner/admin IDs
 
-- Enforce request timeouts.
-- Use rate limits per tenant.
-- Use queue and backpressure to prevent overload.
+## ⚙️ Runtime guardrails
 
-## Logging policy
+- Request timeouts
+- Per-tenant rate limits
+- Queue + backpressure controls
 
-- Log status codes, latency, tier, and upstream route.
-- Do not log full secrets.
-- Keep incident timeline for postmortems.
+## 📜 Logging policy
 
-## Licensing and distribution
+- Log status code, latency, tier, upstream route
+- Never log full secrets
+- Keep timeline data for postmortems
 
-- Keep Paid package and support policy explicit.
-- Keep trial restrictions documented to avoid misuse.
+## 📦 Licensing and distribution
+
+- Keep Paid support scope explicit
+- Keep trial restrictions documented

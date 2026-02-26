@@ -1,24 +1,36 @@
-﻿# Referencia de API (PT-BR)
+﻿# 📡 Referencia de API (PT-BR)
 
-Base URL:
+> Endpoints oficiais do gateway AiCordCloud (compatibilidade OpenAI).
+
+## 🌍 Base URL
 
 ```text
 https://api.aicord.cloud
 ```
 
-## Autenticacao
+## 🔐 Autenticacao
+
+Use um dos formatos:
 
 - `Authorization: Bearer <API_KEY>`
 - `x-api-key: <API_KEY>`
 
-## Endpoints oficiais
+## 🧩 Endpoints
 
-- `GET /`
-- `GET /health`
-- `GET /v1/models`
-- `POST /v1/chat/completions`
+| Metodo | Path | Descricao |
+| --- | --- | --- |
+| `GET` | `/` | Metadados do servico |
+| `GET` | `/health` | Sinal de saude |
+| `GET` | `/v1/models` | Aliases publicos |
+| `POST` | `/v1/chat/completions` | Chat completion |
 
-## Headers importantes
+### Resposta de health
+
+```json
+{"ok": true}
+```
+
+## 🏷️ Headers importantes
 
 - `x-aicord-tier`
 - `x-aicord-model`
@@ -26,7 +38,7 @@ https://api.aicord.cloud
 - `x-aicord-latency-ms`
 - `x-ratelimit-remaining`
 
-## Formato de erro
+## ❌ Formato de erro
 
 ```json
 {
@@ -37,7 +49,7 @@ https://api.aicord.cloud
 }
 ```
 
-## OpenAPI
+## 📄 OpenAPI
 
 - `openapi/aicordcloud.openapi.yaml`
 

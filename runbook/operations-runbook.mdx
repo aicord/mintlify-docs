@@ -1,37 +1,37 @@
-﻿# Operations Runbook
+﻿# 🛠️ Operations Runbook
 
-This runbook defines day-to-day operation and incident handling.
+> Daily operations + incident response playbook.
 
-## Service lifecycle
+## 🔄 Service lifecycle
 
-- Start: process manager command
-- Restart: rolling restart if multiple instances, otherwise controlled restart window
-- Stop: only during maintenance
+- ▶️ Start: process manager command
+- 🔁 Restart: rolling restart if multiple instances
+- ⏹️ Stop: maintenance windows only
 
-## Daily checks
+## 📅 Daily checks
 
 1. Health endpoint status
 2. Error rate in logs
 3. p95 latency trend
-4. Queue pressure (if enabled)
+4. Queue pressure
 5. Upstream fallback ratio
 
-## Weekly checks
+## 🗓️ Weekly checks
 
 1. API key rotation policy audit
 2. Dependency update window
-3. Backup validation (configs, env templates, docs)
+3. Backup validation (configs/env/docs)
 
-## Incident procedure
+## 🚨 Incident procedure
 
 1. Classify severity (P1/P2/P3)
-2. Capture current symptoms and timeline
-3. Mitigate first (failover, temporary limits)
-4. Root cause analysis after stabilization
-5. Publish incident summary internally
+2. Capture symptoms and timeline
+3. Mitigate first (failover/temp limits)
+4. Run RCA after stabilization
+5. Publish internal incident summary
 
-## Deployment policy
+## 📦 Deployment policy
 
 - PR required for docs and operational changes
-- No direct changes on production host without change note
-- Rollback path must be documented before release
+- No direct production changes without change note
+- Rollback path documented before release

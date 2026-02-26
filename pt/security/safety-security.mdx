@@ -1,24 +1,31 @@
-﻿# Safety and Security (PT-BR)
+﻿# 🛡️ Safety and Security (PT-BR)
 
-## Chaves
+> Baseline de seguranca para operar e vender AiCord.
 
-- Nunca versionar chaves em Git
+## 🔐 Chaves
+
+- Nunca versionar chave em Git
 - Usar secret manager em producao
 - Rotacionar chaves periodicamente
 
-## Controle de acesso
+## 👮 Controle de acesso
 
 - Menor privilegio para painel e servidor
 - Comandos de gestao restritos a owner/admin
 
-## Protecoes de runtime
+## ⚙️ Guardrails de runtime
 
-- Timeout
+- Timeout de request
 - Rate limit por tenant
-- Fila/backpressure
+- Fila + backpressure
 
-## Logs
+## 📜 Politica de logs
 
-- Registrar status, latencia, tier e upstream
-- Nao registrar segredos
-- Manter timeline para RCA
+- Logar status, latencia, tier e rota upstream
+- Nunca logar segredo completo
+- Manter timeline para postmortem
+
+## 📦 Licenciamento e distribuicao
+
+- Escopo de suporte Paid explicito
+- Restricoes de Trial documentadas

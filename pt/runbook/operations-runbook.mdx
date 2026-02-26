@@ -1,29 +1,37 @@
-﻿# Runbook de Operacao (PT-BR)
+﻿# 🛠️ Runbook de Operacao (PT-BR)
 
-## Rotina diaria
+> Playbook diario para operacao e incidentes.
 
-1. Health endpoint
-2. Taxa de erro
-3. p95 de latencia
+## 🔄 Ciclo do servico
+
+- ▶️ Start: comando do process manager
+- 🔁 Restart: rolling restart quando houver mais de uma instancia
+- ⏹️ Stop: somente janela de manutencao
+
+## 📅 Checks diarios
+
+1. Status do health endpoint
+2. Taxa de erro nos logs
+3. Tendencia de p95
 4. Pressao de fila
-5. Taxa de fallback
+5. Taxa de fallback upstream
 
-## Rotina semanal
+## 🗓️ Checks semanais
 
 1. Auditoria de rotacao de chave
-2. Janela de update
-3. Validacao de backup
+2. Janela de update de dependencias
+3. Validacao de backups (config/env/docs)
 
-## Incidentes
+## 🚨 Processo de incidente
 
-1. Classificar severidade
-2. Registrar timeline
-3. Mitigar primeiro
-4. Fazer RCA apos estabilidade
+1. Classificar severidade (P1/P2/P3)
+2. Registrar sintomas e timeline
+3. Mitigar primeiro (failover/limites temporarios)
+4. RCA apos estabilizacao
 5. Publicar resumo interno
 
-## Politica de deploy
+## 📦 Politica de deploy
 
-- PR obrigatorio
-- Mudancas de producao com registro
-- Plano de rollback antes do release
+- PR obrigatoria para mudancas operacionais
+- Sem alteracao direta em producao sem registro
+- Plano de rollback antes de release
