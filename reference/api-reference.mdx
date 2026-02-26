@@ -1,21 +1,19 @@
-﻿# 📡 API Reference (AiCordCloud)
+﻿# <img src="/icons/api.svg" alt="API icon" width="22" /> API Reference (AiCordCloud)
 
-> OpenAI-compatible gateway endpoints and response contract.
-
-## 🌍 Base URL
+Base URL:
 
 ```text
 https://api.aicord.cloud
 ```
 
-## 🔐 Authentication
+## <img src="/icons/key.svg" alt="Key icon" width="18" /> Authentication
 
 Use one of:
 
 - `Authorization: Bearer <API_KEY>`
 - `x-api-key: <API_KEY>`
 
-## 🧩 Endpoints
+## <img src="/icons/reference.svg" alt="Reference icon" width="18" /> Endpoints
 
 | Method | Path | Description |
 | --- | --- | --- |
@@ -24,13 +22,13 @@ Use one of:
 | `GET` | `/v1/models` | Public model aliases |
 | `POST` | `/v1/chat/completions` | Chat completion |
 
-### Health response
+### `GET /health` response
 
 ```json
 {"ok": true}
 ```
 
-### Chat completion example
+### `POST /v1/chat/completions` example
 
 ```bash
 curl https://api.aicord.cloud/v1/chat/completions \
@@ -46,7 +44,7 @@ curl https://api.aicord.cloud/v1/chat/completions \
   }'
 ```
 
-## 🏷️ Response headers
+## <img src="/icons/process.svg" alt="Headers icon" width="18" /> Response headers
 
 - `x-aicord-tier`
 - `x-aicord-model`
@@ -54,7 +52,7 @@ curl https://api.aicord.cloud/v1/chat/completions \
 - `x-aicord-latency-ms`
 - `x-ratelimit-remaining`
 
-## ❌ Error format
+## <img src="/icons/troubleshoot.svg" alt="Error icon" width="18" /> Error format
 
 ```json
 {
@@ -65,7 +63,7 @@ curl https://api.aicord.cloud/v1/chat/completions \
 }
 ```
 
-## 📄 OpenAPI spec
+## OpenAPI spec
 
 - Local path: `openapi/aicordcloud.openapi.yaml`
 - Validate:

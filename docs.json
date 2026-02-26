@@ -11,16 +11,24 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "English",
+        "tab": "AiCordCloud Docs",
         "groups": [
           {
-            "group": "Start",
+            "group": "Getting Started",
             "pages": [
               "index",
               "getting-started/quickstart",
-              "getting-started/trial-paid-source",
               "deploy/vps-cpu-hybrid",
               "deploy/mintlify-cloudflare-domain"
+            ]
+          },
+          {
+            "group": "API and Security",
+            "pages": [
+              "reference/api-reference",
+              "reference/bot-integration",
+              "security/safety-security",
+              "troubleshooting/common-errors"
             ]
           },
           {
@@ -28,50 +36,13 @@
             "pages": [
               "runbook/operations-runbook",
               "runbook/documentation-process",
-              "troubleshooting/common-errors",
-              "security/safety-security",
               "capacity-sla/capacity-sla"
             ]
           },
           {
-            "group": "Reference",
+            "group": "Updates",
             "pages": [
-              "reference/api-reference",
-              "reference/bot-integration",
               "changelog/documentation-updates"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "PT-BR",
-        "groups": [
-          {
-            "group": "Inicio",
-            "pages": [
-              "pt/index",
-              "pt/getting-started/quickstart",
-              "pt/getting-started/trial-paid-source",
-              "pt/deploy/vps-cpu-hybrid",
-              "pt/deploy/mintlify-cloudflare-domain"
-            ]
-          },
-          {
-            "group": "Operacao",
-            "pages": [
-              "pt/runbook/operations-runbook",
-              "pt/runbook/documentation-process",
-              "pt/troubleshooting/common-errors",
-              "pt/security/safety-security",
-              "pt/capacity-sla/capacity-sla"
-            ]
-          },
-          {
-            "group": "Referencia",
-            "pages": [
-              "pt/reference/api-reference",
-              "pt/reference/bot-integration",
-              "pt/changelog/documentation-updates"
             ]
           }
         ]

@@ -1,10 +1,8 @@
-﻿# ⚡ Quickstart
+﻿# <img src="/icons/quickstart.svg" alt="Quickstart icon" width="22" /> Quickstart
 
-> 🎯 Goal: from zero to first valid response in minutes.
+Goal: from zero to first valid response in minutes.
 
----
-
-## 1. 🔧 Configure AiCord bot
+## 1) Configure your API key and endpoint
 
 Set these variables in bot `.env`:
 
@@ -16,7 +14,7 @@ OPENAI_MODEL=aicord/fast
 AI_FALLBACK_PROVIDERS=
 ```
 
-## 2. 💬 Configure Discord channels
+## 2) Configure Discord channels
 
 Use slash commands:
 
@@ -24,7 +22,7 @@ Use slash commands:
 2. `/chat admin channel`
 3. Optional: `/chat prompt edit`
 
-## 3. 📡 Validate API connectivity
+## 3) Validate API connectivity
 
 ```bash
 curl https://api.aicord.cloud/v1/chat/completions \
@@ -37,15 +35,9 @@ curl https://api.aicord.cloud/v1/chat/completions \
   }'
 ```
 
-✅ Expected: `200 OK` and assistant text in `choices[0].message.content`.
+Expected result: `200 OK` and text in `choices[0].message.content`.
 
-## 4. ✅ Validate in Discord
-
-- Send a short prompt in admin channel
-- Check response latency and content
-- Confirm logs include provider and latency metadata
-
-## 5. 🟢 Go-live checklist
+## 4) Go-live checklist
 
 - [ ] Bot replies in configured channels
 - [ ] `/doctor live_probe:true` passes

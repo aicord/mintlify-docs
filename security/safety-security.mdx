@@ -1,31 +1,26 @@
-﻿# 🛡️ Safety and Security
+﻿# <img src="/icons/security.svg" alt="Security icon" width="22" /> Safety and Security
 
-> Security baseline for selling and operating AiCord in production.
+Security baseline for operating and selling AiCordCloud.
 
-## 🔐 Key handling
+## API key handling
 
 - Never commit API keys to Git
-- Use secret manager for production
-- Rotate tenant keys periodically
+- Use a secrets manager in production
+- Rotate tenant keys on schedule
 
-## 👮 Access control
+## Access control
 
-- Enforce least privilege on panel/server access
-- Restrict management commands to owner/admin IDs
+- Restrict panel and server access with least privilege
+- Restrict management commands to owner/admin users
 
-## ⚙️ Runtime guardrails
+## Runtime guardrails
 
 - Request timeouts
 - Per-tenant rate limits
-- Queue + backpressure controls
+- Queue and backpressure controls
 
-## 📜 Logging policy
+## Logging policy
 
 - Log status code, latency, tier, upstream route
 - Never log full secrets
-- Keep timeline data for postmortems
-
-## 📦 Licensing and distribution
-
-- Keep Paid support scope explicit
-- Keep trial restrictions documented
+- Keep timelines for postmortems

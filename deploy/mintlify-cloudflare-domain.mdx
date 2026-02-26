@@ -1,42 +1,20 @@
-﻿# 🌐 Mintlify + Cloudflare Custom Domain
+﻿# <img src="/icons/domain.svg" alt="Domain icon" width="22" /> Mintlify + Cloudflare Custom Domain
 
-> Publish docs cleanly on `docs.aicord.cloud`.
+Publish documentation at `docs.aicord.cloud`.
 
-## 1. 🔗 Connect repository in Mintlify
+## Steps
 
-1. Open Mintlify dashboard
-2. Connect your GitHub repository
-3. Confirm `docs/docs.json` is the project config
+1. Connect repository in Mintlify dashboard
+2. Configure custom domain: `docs.aicord.cloud`
+3. In Cloudflare DNS, create:
+   - Type: `CNAME`
+   - Name: `docs`
+   - Target: `cname.mintlify-dns.com`
+4. Set SSL/TLS to `Full (strict)` after certificate provisioning
 
-## 2. 🏷️ Configure custom domain
-
-Set domain to:
-
-- `docs.aicord.cloud`
-
-## 3. ☁️ Configure Cloudflare DNS
-
-Create record:
-
-- Type: `CNAME`
-- Name: `docs`
-- Target: `cname.mintlify-dns.com`
-- Proxy mode: follow Mintlify recommendation during validation
-
-## 4. 🔒 SSL/TLS mode
-
-Set Cloudflare SSL/TLS to:
-
-- `Full (strict)` after certificate provisioning
-
-## 5. ✅ Verification checklist
+## Validation checklist
 
 - [ ] `https://docs.aicord.cloud` resolves
 - [ ] TLS certificate is valid
 - [ ] No mixed-content warnings
-- [ ] Mintlify build is connected to Git pushes
-
-## 6. 🔁 Ongoing operations
-
-- Keep DNS records documented
-- Re-validate after DNS/security changes
+- [ ] Mintlify build deploys from Git pushes

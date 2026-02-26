@@ -1,35 +1,29 @@
-﻿# 🚀 AiCord + AiCordCloud Docs
+﻿# <img src="/icons/cloud.svg" alt="Cloud icon" width="22" /> AiCordCloud Documentation
 
-> 🟢 **Paid-ready** · 🌍 **EN + PT-BR** · 🔐 **Safety-first automation**
+Official documentation focused on using AiCordCloud in production:
+endpoint usage, API keys, authentication, integration, and operations.
 
-Official docs for deploying, operating, and selling AiCord with AiCordCloud.
+## <img src="/icons/start.svg" alt="Start icon" width="18" /> Start here
 
----
+| Guide | Purpose |
+| --- | --- |
+| [Quickstart](getting-started/quickstart) | Configure your key and call the API in minutes |
+| [Deploy VPS CPU Hybrid](deploy/vps-cpu-hybrid) | Deploy API on your infrastructure |
+| [Custom Domain (Mintlify + Cloudflare)](deploy/mintlify-cloudflare-domain) | Publish docs on `docs.aicord.cloud` |
 
-## ✨ What you'll find
+## <img src="/icons/api.svg" alt="API icon" width="18" /> API usage
 
-- ⚙️ **Fast setup** for bot + API
-- 🧠 **Operational runbooks** for production
-- 📡 **API reference** (OpenAI-compatible)
-- 🛡️ **Security and capacity** guidance for real clients
+| Guide | Purpose |
+| --- | --- |
+| [API Reference](reference/api-reference) | Endpoints, headers, request and response contract |
+| [Bot Integration](reference/bot-integration) | Connect AiCord bot to AiCordCloud |
+| [Safety and Security](security/safety-security) | API key handling and security baseline |
+| [Troubleshooting](troubleshooting/common-errors) | Fix 401, 429, timeout, and upstream failures |
 
-## 🧭 Fast navigation
+## <img src="/icons/server.svg" alt="Server icon" width="18" /> Production baseline
 
-| 🚀 Start | 🛠️ Operations | 📚 Reference |
-| --- | --- | --- |
-| [Quickstart](getting-started/quickstart) | [Operations Runbook](runbook/operations-runbook) | [API Reference](reference/api-reference) |
-| [Trial vs Paid vs Source](getting-started/trial-paid-source) | [Troubleshooting](troubleshooting/common-errors) | [Bot Integration](reference/bot-integration) |
-| [Deploy VPS CPU Hybrid](deploy/vps-cpu-hybrid) | [Safety & Security](security/safety-security) | [Documentation Updates](changelog/documentation-updates) |
-
-## ⚙️ Production baseline
-
-- 🖥️ Infra profile: **CPU-only hybrid** (local + remote fallback)
-- 👥 Safe launch target: **10-20 concurrent users**
-- ⏱️ SLO target:
+- Infrastructure profile: CPU-only hybrid (local + remote fallback)
+- Safe launch target: 10-20 concurrent users
+- SLO target:
   - `p95 <= 4s` for short requests
   - `p95 <= 8s` for complex requests
-
-## 🌐 Language switch
-
-- English (default)
-- Portuguese mirror: [Inicio PT-BR](pt/index)

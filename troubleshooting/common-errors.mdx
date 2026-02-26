@@ -1,29 +1,29 @@
-﻿# 🆘 Troubleshooting
+﻿# <img src="/icons/troubleshoot.svg" alt="Troubleshooting icon" width="22" /> Troubleshooting
 
-> Fast diagnosis for the most common production failures.
+Quick diagnosis for common AiCordCloud failures.
 
 | Error | Typical cause | Immediate fix |
 | --- | --- | --- |
-| `401 Unauthorized` | Wrong/rotated key | Validate key + header format and restart bot |
-| `429 Rate limit` | Burst too high | Reduce burst, increase tier limits, queue requests |
+| `401 Unauthorized` | Wrong or rotated key | Validate key and auth header, then restart bot |
+| `429 Rate limit` | Burst too high | Reduce burst, increase tenant limits, queue requests |
 | `Timeout` | CPU saturation or long prompts | Reduce tokens and route heavy prompts to fallback |
-| `502 Upstream` | Local/remote upstream unavailable | Verify upstream process, URL, key, and failover |
-| Billing/quota | No credits | Refill billing and confirm provider account status |
+| `502 Upstream` | Upstream unavailable | Verify upstream process, URL, key, and failover |
+| Billing/quota errors | No credits | Refill billing and confirm provider account status |
 
-## 🔍 401 Unauthorized
+## 401 Unauthorized
 
-- Check API key value
-- Check `Authorization: Bearer ...` format
-- Restart bot after `.env` changes
+1. Validate API key value
+2. Validate `Authorization: Bearer ...` format
+3. Restart bot after `.env` updates
 
-## 🔍 429 Rate limit
+## 429 Rate limit
 
-- Apply backpressure in caller
-- Review per-tenant limits
-- Use retry with jitter
+1. Apply backpressure in caller
+2. Review per-tenant limits
+3. Retry with jitter
 
-## 🔍 Timeout / slow response
+## Timeout
 
-- Lower max tokens
-- Route heavy tasks to remote fallback
-- Reassess local model profile
+1. Lower `max_tokens`
+2. Route heavy tasks to remote fallback
+3. Reassess local model profile
